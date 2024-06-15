@@ -1,10 +1,11 @@
 import java.util.Scanner;
 
+// by removing GameGui.java this can be used with just the terminal
 public class App {
     public static void main(String[] args) throws Exception {
         Scanner input = new Scanner(System.in);
         String user;
-        boolean play = true;
+        //boolean play = true;
 
         Game game = new Game();
         
@@ -14,8 +15,8 @@ public class App {
         //input.nextLine();
         System.out.println("-------");
 
-        while(play == true){
-            user = "";
+        while(true){
+            //user = "";
             System.out.println("\nPlease choose rock, paper, or scissors. Enter 0 to quit.");
             user = input.nextLine();
             // plays game
@@ -23,21 +24,20 @@ public class App {
 
             // checks if user decided to stop playing
             if(user.equals("0")){
-                play = false;
-
                 System.out.println("\n-------");
                 System.out.println(game.gameScore());
 
-                if(game.userScore() > game.botScore()){
+                if(game.getUser() > game.getBot()){
                     System.out.println("You won!");
                 }
-                else if(game.userScore() < game.botScore()){
-                    System.out.println("You tied.");
+                else if(game.getUser() < game.getBot()){
+                    System.out.println("You lost.");
                 }
                 else{
                     System.out.println("You tied.");
                 }
                 input.close();
+                break;
             }
             //else{}
             user = "";

@@ -7,6 +7,10 @@ public class Game {
         bot = 0;
     }
 
+    // getter methods for user and bot points
+    public int getUser(){return user;}
+    public int getBot(){return bot;}
+
     // checks if user entered rock, paper, or scissors
     public boolean isValid(String choice){
         choice = choice.toLowerCase();
@@ -55,7 +59,7 @@ public class Game {
             }
 
             //bot chooses scissors
-            else if(random == 1){
+            else if(random == 3){
                 if(choice.equals("scissors")){
                     result = "Tie";
                 }
@@ -76,14 +80,6 @@ public class Game {
         }
 
         return result;
-    }
-
-    public int userScore(){
-        return user;
-    }
-
-    public int botScore(){
-        return bot;
     }
 
     public String gameScore(){
