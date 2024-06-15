@@ -1,6 +1,7 @@
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.SwingConstants;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -28,6 +29,7 @@ public class GameGui {
         // allows label to be visible
         frame.add(label);
         label.setFont(new Font("Verdana", Font.BOLD, 15));
+        
 
         JButton button = new JButton("Click to Start");
         button.setBounds(120,150,150,30);
@@ -50,6 +52,12 @@ public class GameGui {
                 label.setBounds(115, 15, 200, 100);
                 label.setText("You: " + play.getUser() + " Computer: " + play.getBot());
 
+                // tells user the result of the game
+                JLabel result = new JLabel("", SwingConstants.CENTER);
+                result.setBounds(100, -20, 200, 100);
+                result.setFont(new Font("Plain", Font.ITALIC, 20));
+                frame.add(result);
+
                 // creates rock button
                 JButton rock = new JButton("Rock");
                 rock.setBounds(100, 120, 200, 50);
@@ -71,22 +79,26 @@ public class GameGui {
                 // activates rock button
                 rock.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e){
-                        play.play("rock");
+                        String game = play.play("rock");
                         label.setText("You: " + play.getUser() + " Computer: " + play.getBot());
+                        result.setText(game);
+                        
                     }
                 });
 
                 paper.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e){
-                        play.play("paper");
+                        String game = play.play("paper");
                         label.setText("You: " + play.getUser() + " Computer: " + play.getBot());
+                        result.setText(game);
                     }
                 });
 
                 scissors.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e){
-                        play.play("scissors");
+                        String game = play.play("scissors");
                         label.setText("You: " + play.getUser() + " Computer: " + play.getBot());
+                        result.setText(game);
                     }
                 });
             }
